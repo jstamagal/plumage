@@ -28,7 +28,11 @@ _plm_mint_precmd() {
   fi
   local why=${_plm_mint_why[$e]:-}
   [[ -z $why ]] && (( e > 128 && e < 165 )) && why="signal $(( e - 128 ))"
-  typeset -g _plm_mint_note=" %F{203}✗ ${e}${why:+ %F{240}· %F{250}${why}}%f"
+  if [[ -n $why ]]; then
+    typeset -g _plm_mint_note=" %F{203}✗ ${e} %F{240}· %F{250}${why}%f"
+  else
+    typeset -g _plm_mint_note=" %F{203}✗ ${e}%f"
+  fi
 }
 PLUMAGE_THEME_PRECMD=_plm_mint_precmd
 
