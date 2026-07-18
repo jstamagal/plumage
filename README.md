@@ -2,6 +2,8 @@
 
 **Every distrobox gets its own feathers.**
 
+![the flock](assets/flock.png)
+
 You know how it goes: distrobox shares your `$HOME`, your `$HOME` carries your
 `.zshrc`, and suddenly every container on your machine wears the exact same
 prompt as your host. Eight boxes, one face. You `ps` in the wrong one

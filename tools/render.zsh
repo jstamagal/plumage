@@ -33,8 +33,12 @@ _render() {  # $1 = exit code, $2 = streak
   if [[ -n $right ]]; then
     # right prompt sits at the terminal edge; approximate that here
     local lplain=${left//$'\e'\[[;0-9]#m/} rplain=${right//$'\e'\[[;0-9]#m/}
-    local lastline=${${(f)lplain}[-1]}
-    local pad=$(( ${COLUMNS:-100} - ${(m)#lastline} - ${(m)#rplain} - 8 ))
+    local -a llines
+    llines=( "${(@f)lplain}" )
+    local lastline=${llines[-1]}
+    local cols=${PLUMAGE_COLS:-${COLUMNS:-92}}
+    (( cols <= 0 || cols > 92 )) && cols=92
+    local pad=$(( cols - ${(m)#lastline} - ${(m)#rplain} - 8 ))
     (( pad < 1 )) && pad=1
     print -rn -- "$left"
     print -rn -- "${(l:pad:: :):-}"
