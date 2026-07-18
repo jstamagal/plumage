@@ -67,7 +67,9 @@ list. No special fonts — every glyph here is ordinary Unicode.
 
 Every mechanic above is real shell state — exit codes, history numbers,
 job tables, streaks, durations, `/etc/os-release`. Nothing is decoration
-pretending to be information.
+pretending to be information. Watch it move:
+
+![the mechanics, live](assets/demo.gif)
 
 ## commands
 
